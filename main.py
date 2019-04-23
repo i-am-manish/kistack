@@ -1,7 +1,7 @@
 import sys
-from cv_dev import ACTION
 import random
 import urllib.request
+from cv_dev import ACTION
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,13 +21,13 @@ DEFAULT_USER_AGENTS = [
 DEFAULT_USER_AGENT = random.choice(DEFAULT_USER_AGENTS)
 
 print(DEFAULT_USER_AGENT)
-file_name = 'p.png'
 
-# Varibles
+# Variables
 
 driver = webdriver.Chrome()
 driver.get('http://google.com')
 xpath = '//*[@id="hplogo"]'
+file_name = 'p.png'
 
 # Execution of process
 
