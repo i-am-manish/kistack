@@ -1,7 +1,7 @@
 import sys
 import random
 import urllib.request
-from cv_dev import ACTION
+from call_cv import action
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -55,7 +55,7 @@ else:
 
     try:
 
-        ACTION(file_name)
+        action(file_name)
 
     except:
 
