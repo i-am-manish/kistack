@@ -58,5 +58,6 @@ else:
         action(file_name)
 
     except:
-
+        
+        print('Wrong call_cv module!')
         sys.exit(-1)
