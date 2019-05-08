@@ -20,44 +20,55 @@ DEFAULT_USER_AGENTS = [
 
 DEFAULT_USER_AGENT = random.choice(DEFAULT_USER_AGENTS)
 
-print(DEFAULT_USER_AGENT)
+print(DEFAULT_USER_AGENT + "\n")
 
-# Variables
+ERROR = """chromedriver.exe was not found.
 
-driver = webdriver.Chrome()
-driver.get('http://google.com')
-xpath = '//*[@id="hplogo"]'
-file_name = 'p.png'
+Make sure that it's located in your PATH or in your directory.
+Download the driver from this website http://chromedriver.chromium.org if you haven't."""
 
-# Execution of process
+def catch(web, xpath, file_name):
 
-try:
+    try:
+        driver = webdriver.Chrome()
 
-    element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
-    logo = driver.find_element_by_xpath(xpath)
-    logo.click()
-    src = logo.get_attribute('src')
-    opener = urllib.request.build_opener()
-    opener.addheaders = [('User-agent', DEFAULT_USER_AGENT)]
-    urllib.request.install_opener(opener)
-    urllib.request.urlretrieve(src, file_name)
+    except:
+        print(ERROR)
+        sys.exit()
 
-    driver.quit()
+    driver.get(web)
 
-except:
-
-    print('Something went wrong')
-
-    driver.quit()
-    sys.exit(-1)
-
-else:
+    # Execution of process
 
     try:
 
-        action(file_name)
+        element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        logo = driver.find_element_by_xpath(xpath)
+        logo.click()
+        src = logo.get_attribute('src')
+        opener = urllib.request.build_opener()
+        opener.addheaders = [('User-agent', DEFAULT_USER_AGENT)]
+        urllib.request.install_opener(opener)
+        urllib.request.urlretrieve(src, file_name)
+
+        driver.quit()
 
     except:
-        
-        print('Wrong call_cv module!')
+
+        print('Something went wrong')
+
+        driver.quit()
         sys.exit(-1)
+
+    else:
+
+        try:
+
+            action(file_name)
+
+        except:
+
+            print('Wrong call_cv module!')
+            sys.exit(-1)
+# Example
+# catch('http://google.com', '//*[@id="hplogo"]', 'image.png')
