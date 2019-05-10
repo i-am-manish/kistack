@@ -63,8 +63,6 @@ def catch(web=webs, xpath=xpaths, image_name=image_names):
         driver.quit()
         sys.exit(-1)
 
-
-
     try:
 
         action()
