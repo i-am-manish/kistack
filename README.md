@@ -2,7 +2,7 @@
 A python script that solve captcha using OpenCV.
 Designed first to solve kissanime captcha
 
-This first release only works in windows but you can change it to work accordingly to your taste.
+This first release only works in windows but you can change it to work accordingly in your OS.
 
 ### Dependencies
 
