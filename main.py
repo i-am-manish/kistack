@@ -1,7 +1,7 @@
+import cv2
 import sys
 import random
 import urllib.request
-from call_cv import action
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,12 +22,15 @@ DEFAULT_USER_AGENT = random.choice(DEFAULT_USER_AGENTS)
 
 print(DEFAULT_USER_AGENT + "\n")
 
-ERROR = """chromedriver.exe was not found.
+ERROR = """chromedriver.exe was not found or is not compatible with your browser.
 
 Make sure that it's located in your PATH or in your directory.
 Download the driver from this website http://chromedriver.chromium.org if you haven't."""
 
-def catch(web, xpath, file_name):
+# You can change the following tuple for your preference
+webs, xpaths, image_names = 'http://google.com', '//*[@id="hplogo"]', 'image.png'
+
+def catch(web=webs, xpath=xpaths, image_name=image_names):
 
     try:
         driver = webdriver.Chrome()
@@ -49,7 +52,7 @@ def catch(web, xpath, file_name):
         opener = urllib.request.build_opener()
         opener.addheaders = [('User-agent', DEFAULT_USER_AGENT)]
         urllib.request.install_opener(opener)
-        urllib.request.urlretrieve(src, file_name)
+        urllib.request.urlretrieve(src, image_name)
 
         driver.quit()
 
@@ -60,15 +63,21 @@ def catch(web, xpath, file_name):
         driver.quit()
         sys.exit(-1)
 
-    else:
 
-        try:
 
-            action(file_name)
+    try:
 
-        except:
+        action()
 
-            print('Wrong call_cv module!')
-            sys.exit(-1)
-            
-# catch('http://google.com', '//*[@id="hplogo"]', 'image.png')
+    except:
+
+        print('Wrong call_cv module!')
+        sys.exit(-1)
+
+def action(name=image_names):
+
+    img = cv2.imread(name, 1)
+    cv2.imshow('some', img)
+    cv2.waitKey(0)
+
+catch()
