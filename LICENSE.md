@@ -1,4 +1,4 @@
-<img alt="OSI Approved License Logo" hspace="20" src="https://opensource.org/files/OSI_Approved_License.png" style="float:right" width="150">
+<html><head></head><body><img alt="OSI Approved License Logo" hspace="20" src="https://opensource.org/files/OSI_Approved_License.png" style="float:right" width="150"></body></html>
 
 MIT License
 
