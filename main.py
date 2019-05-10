@@ -27,11 +27,9 @@ ERROR = """chromedriver.exe was not found or is not compatible with your browser
 Make sure that it's located in your PATH or in your directory.
 Download the driver from this website http://chromedriver.chromium.org if you haven't."""
 
-# You can change the following tuple for your preference
-webs, xpaths, image_names = 'http://google.com', '//*[@id="hplogo"]', 'image.png'
+webs, xpaths, image_names = 'https://kissanime.ru/Anime/One-Punch-Man-Season-2/Episode-005?id=158021', '//*[@id="formVerify1"]/div[2]/div/div[1]/img', 'image.png'
 
 def catch(web=webs, xpath=xpaths, image_name=image_names):
-
     try:
         driver = webdriver.Chrome()
 
@@ -44,7 +42,6 @@ def catch(web=webs, xpath=xpaths, image_name=image_names):
     # Execution of process
 
     try:
-
         element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
         logo = driver.find_element_by_xpath(xpath)
         logo.click()
@@ -57,25 +54,19 @@ def catch(web=webs, xpath=xpaths, image_name=image_names):
         driver.quit()
 
     except:
-
         print('Something went wrong')
 
         driver.quit()
         sys.exit(-1)
 
     try:
-
         action()
 
     except:
-
         print('Wrong call_cv module!')
         sys.exit(-1)
 
 def action(name=image_names):
-
     img = cv2.imread(name, 1)
     cv2.imshow('some', img)
     cv2.waitKey(0)
-
-catch()
