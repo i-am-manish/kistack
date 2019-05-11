@@ -1,5 +1,5 @@
-import cv2
 import sys
+from recog import numrecog
 try:
     import cloudscraper
     scraper = cloudscraper.create_scraper()
@@ -16,8 +16,10 @@ ERROR = """chromedriver.exe was not found or is not compatible with your browser
 Make sure that it's located in your PATH or in your directory.
 Download the driver from this website http://chromedriver.chromium.org if you haven't."""
 
-# Remove this tuple if you want to manually add some.
-webs, xpaths, image_names = 'https://kissanime.ru/Anime/One-Punch-Man-Season-2/Episode-005?id=158021', '//*[@id="formVerify1"]/div[2]/div/div[1]/img', 'image.png'
+# sample variables
+webs = 'https://kissanime.ru/Anime/One-Punch-Man-Season-2/Episode-005?id=158021'
+xpaths = '//*[@id="formVerify1"]/div[2]/div/div[1]/img'
+image_names = 'image.png'
 
 def catch(web=webs, xpath=xpaths, image_name=image_names):
     try:
@@ -45,12 +47,6 @@ def catch(web=webs, xpath=xpaths, image_name=image_names):
         sys.exit()
 
 
-    action()
+    return image_name
 
-
-def action(name=image_names):
-    img = cv2.imread(name, 1)
-    cv2.imshow("!kistack!", img)
-    cv2.waitKey(0)
-
-catch()
+numrecog(catch())
