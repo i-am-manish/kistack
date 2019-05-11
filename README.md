@@ -1,4 +1,4 @@
-Website-Captcha-Solver
+kistack
 =====================
 
 A python script that solve captcha using OpenCV.
@@ -13,5 +13,9 @@ This first release only works in windows but you can change it to work according
 * **[selenium](https://pypi.org/project/selenium/)** >= 3.141.0
 * **[chromedriver](http://chromedriver.chromium.org/)** 
 
-### Under Development
+Have the ability to choose your cloudflare scraping module.
 
+* **[cloudscraper](https://pypi.org/project/cloudscraper/1.1.9/)** >= 1.1.9
+* **[cfscrape](https://pypi.org/project/cfscrape/)** >= 2.0.1
+
+### Under Development
