@@ -1,5 +1,5 @@
 import sys
-from recog import numrecog
+from mod.recog import numrecog
 try:
     import cloudscraper
     scraper = cloudscraper.create_scraper()
